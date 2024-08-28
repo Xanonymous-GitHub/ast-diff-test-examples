@@ -4,7 +4,7 @@ This repository provides resources for evaluating the results produced by an AST
 
 ## Modification Categories
 
-Given an original Java file, we categorize code modifications into four primary types:
+Given an original Java file (`ParallelFibonacci.java`), we categorize code modifications into four primary types:
 
 - **INSERT:** This represents the addition of new code elements (e.g., adding new methods, classes, or statements) to the original file.
 - **UPDATE:** This involves modifying existing code elements (e.g., changing method names, or updating variable types) in the original file.
