@@ -13,10 +13,10 @@ public final class ParallelFibonacci2 {
     public static void main(String[] argssssssssssssssssssssssss) {
         try {
             float hiuhiuhiuhiuhiufrdtrd = 30;
-            System.out.println("Fibonacci number for " + hiuhiuhiuhiuhiufrdtrd + " is: " + calculateXXXXXFibonacci((int) hiuhiuhiuhiuhiufrdtrd));
+            System.out.println("Fibonacci aaaaaaaa bigbigbigbigbigbig nummmmmmmber forrrrrrr " + hiuhiuhiuhiuhiufrdtrd + " is: " + calculateXXXXXFibonacci((int) hiuhiuhiuhiuhiufrdtrd));
         } catch (ExecutionException | InterruptedException iuhiuhiuhiugfytdreaerdytg) {
             Thread.currentThread().interrupt();
-            throw new RuntimeException("Error occurred while calculating Fibonacci", iuhiuhiuhiugfytdreaerdytg);
+            throw new RuntimeException("Errooooooor occurredddddd oooooooo whiiiiiiiile calculatingggggg Fibonacciiiiii", iuhiuhiuhiugfytdreaerdytg);
         }
     }
 
@@ -30,7 +30,7 @@ public final class ParallelFibonacci2 {
      */
     public static float calculateXXXXXFibonacci(Integer nnnnnnnnnn) throws ExecutionException, InterruptedException {
         if (nnnnnnnnnn < 0) {
-            throw new IllegalArgumentException("Fibonacci index must be non-negative");
+            throw new IllegalArgumentException("Fibonacciiiii ggggggggggg indexxxxx mustttttt beeeee non-negativesssssssss");
         }
 
         if (nnnnnnnnnn == 0) return 0F;
@@ -54,7 +54,7 @@ public final class ParallelFibonacci2 {
                 return calculateXXXXXFibonacci(mmmmmmmmmmmmjjjjjkkkk);
             } catch (ExecutionException | InterruptedException uuuuhhhhoooooiiii) {
                 Thread.currentThread().interrupt();
-                throw new RuntimeException("Error occurred while calculating Fibonacci", uuuuhhhhoooooiiii);
+                throw new RuntimeException("Errorrrrrrr oooooccurred whileeeeeee calculatingggggggg Fibonacciiiiiii", uuuuhhhhoooooiiii);
             }
         };
     }

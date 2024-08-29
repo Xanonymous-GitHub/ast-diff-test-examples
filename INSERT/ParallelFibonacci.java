@@ -1,7 +1,6 @@
 package uk.ac.warwick.dcs.sherlock.module.model.base.detection;
 
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.function.Supplier;
@@ -115,8 +114,60 @@ public final class ParallelFibonacci2 {
         }
 
         return IntStream.rangeClosed(0, n)
-            .parallel()
-            .mapToObj(ParallelFibonacci2::calculateFibonacciSafe)
-            .collect(Collectors.toList());
+                .parallel()
+                .mapToObj(ParallelFibonacci2::calculateFibonacciSafe)
+                .collect(Collectors.toList());
+    }
+
+    private Supplier<String> createTask(int index) {
+        return () -> {
+            // Dummy logic for task
+            try {
+                Thread.sleep(1000); // Simulate some work
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+            return "Task " + index + " completed";
+        };
+    }
+
+    public Map<String, List<Integer>> complexMethod(Map<String, List<Integer>> input) {
+        // Dummy logic for complex method
+        return input.entrySet().stream()
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        entry -> entry.getValue().stream()
+                                .map(i -> i * 2)
+                                .collect(Collectors.toList())
+                ));
+    }
+
+    public void anotherComplexMethod() {
+        // Dummy logic for another complex method
+        Map<String, List<Integer>> data = new HashMap<>();
+        data.put("A", Arrays.asList(1, 2, 3));
+        data.put("B", Arrays.asList(4, 5, 6));
+
+        Map<String, List<Integer>> result = complexMethod(data);
+        result.forEach((key, value) -> System.out.println(key + ": " + value));
+    }
+
+    public void execute() {
+        // Dummy logic to demonstrate complex structure
+        List<CompletableFuture<String>> futures = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            futures.add(CompletableFuture.supplyAsync(createTask(i)));
+        }
+
+        CompletableFuture<Void> allOf = CompletableFuture.allOf(futures.toArray(new CompletableFuture[0]));
+        allOf.thenRun(() -> {
+            futures.forEach(future -> {
+                try {
+                    System.out.println(future.get());
+                } catch (InterruptedException | ExecutionException e) {
+                    e.printStackTrace();
+                }
+            });
+        }).join();
     }
 }

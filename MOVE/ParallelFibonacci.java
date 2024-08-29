@@ -1,8 +1,8 @@
 package uk.ac.warwick.dcs.sherlock.module.model.base.detection;
 
+import java.util.function.Supplier;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
-import java.util.function.Supplier;
 
 public final class ParallelFibonacci2 {
 
