@@ -2,7 +2,6 @@ package uk.ac.warwick.dcs.sherlock.module.model.base.detection;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
-import java.util.function.Supplier;
 
 public final class ParallelFibonacci2 {
 
@@ -33,21 +32,5 @@ public final class ParallelFibonacci2 {
         CompletableFuture<Long> future2 = CompletableFuture.supplyAsync(createFibonacciTask(n - 2));
 
         return future1.thenCombine(future2, Long::sum).get();
-    }
-
-    /**
-     * Creates a task for calculating the Fibonacci number.
-     *
-     * @param n the Fibonacci index
-     * @return a supplier that provides the Fibonacci number
-     */
-    private static Supplier<Long> createFibonacciTask(int n) {
-        return () -> {
-            try {
-                return calculateFibonacci(n);
-            } catch (ExecutionException | InterruptedException e) {
-                throw new RuntimeException("Error occurred while calculating Fibonacci", e);
-            }
-        };
     }
 }

@@ -1,9 +1,12 @@
 package uk.ac.warwick.dcs.sherlock.module.model.base.detection;
 
+import java.util.List;
 import java.util.Scanner;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public final class ParallelFibonacci2 {
 
@@ -81,5 +84,39 @@ public final class ParallelFibonacci2 {
         System.out.println("Starting calculation for Fibonacci index: " + n);
         // Dummy logic, you can replace this with actual logging or monitoring code.
         System.out.println("Finished calculation for Fibonacci index: " + n);
+    }
+
+    /**
+     * Safe wrapper for the calculateFibonacci method.
+     *
+     * @param n the Fibonacci index
+     * @return the Fibonacci number for the given index
+     */
+    private static long calculateFibonacciSafe(int n) {
+        try {
+            return calculateFibonacci(n);
+        } catch (ExecutionException | InterruptedException e) {
+            Thread.currentThread().interrupt();
+            throw new RuntimeException("Error occurred while calculating Fibonacci sequence", e);
+        }
+    }
+
+    /**
+     * Generates a list of Fibonacci numbers up to the specified index.
+     *
+     * @param n the maximum Fibonacci index (must be >= 0)
+     * @return a list of Fibonacci numbers from 0 to n
+     * @throws ExecutionException   if a computation threw an exception
+     * @throws InterruptedException if the current thread was interrupted while waiting
+     */
+    public static List<Long> generateFibonacciSequence(int n) throws ExecutionException, InterruptedException {
+        if (n < 0) {
+            throw new IllegalArgumentException("Fibonacci index must be non-negative");
+        }
+
+        return IntStream.rangeClosed(0, n)
+            .parallel()
+            .mapToObj(ParallelFibonacci2::calculateFibonacciSafe)
+            .collect(Collectors.toList());
     }
 }

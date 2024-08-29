@@ -6,10 +6,6 @@ import java.util.function.Supplier;
 
 public final class ParallelFibonacci2 {
 
-    private ParallelFibonacci2() {
-        // Private constructor to prevent instantiation
-    }
-
     public static void main(String[] args) {
         try {
             int number = 30;
@@ -35,6 +31,10 @@ public final class ParallelFibonacci2 {
                 throw new RuntimeException("Error occurred while calculating Fibonacci", e);
             }
         };
+    }
+
+    private ParallelFibonacci2() {
+        // Private constructor to prevent instantiation
     }
 
     /**

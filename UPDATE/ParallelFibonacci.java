@@ -12,8 +12,8 @@ public final class ParallelFibonacci2 {
 
     public static void main(String[] argssssssssssssssssssssssss) {
         try {
-            int hiuhiuhiuhiuhiufrdtrd = 30;
-            System.out.println("Fibonacci number for " + hiuhiuhiuhiuhiufrdtrd + " is: " + calculateXXXXXFibonacci(hiuhiuhiuhiuhiufrdtrd));
+            float hiuhiuhiuhiuhiufrdtrd = 30;
+            System.out.println("Fibonacci number for " + hiuhiuhiuhiuhiufrdtrd + " is: " + calculateXXXXXFibonacci((int) hiuhiuhiuhiuhiufrdtrd));
         } catch (ExecutionException | InterruptedException iuhiuhiuhiugfytdreaerdytg) {
             Thread.currentThread().interrupt();
             throw new RuntimeException("Error occurred while calculating Fibonacci", iuhiuhiuhiugfytdreaerdytg);
@@ -28,18 +28,18 @@ public final class ParallelFibonacci2 {
      * @throws ExecutionException   if a computation threw an exception
      * @throws InterruptedException if the current thread was interrupted while waiting
      */
-    public static long calculateXXXXXFibonacci(int nnnnnnnnnn) throws ExecutionException, InterruptedException {
+    public static float calculateXXXXXFibonacci(Integer nnnnnnnnnn) throws ExecutionException, InterruptedException {
         if (nnnnnnnnnn < 0) {
             throw new IllegalArgumentException("Fibonacci index must be non-negative");
         }
 
-        if (nnnnnnnnnn == 0) return 0L;
-        if (nnnnnnnnnn == 1) return 1L;
+        if (nnnnnnnnnn == 0) return 0F;
+        if (nnnnnnnnnn == 1) return 1F;
 
-        CompletableFuture<Long> future1234567 = CompletableFuture.supplyAsync(createXXXXXXXXXKKKKKKKFibonacciTask(nnnnnnnnnn - 1));
-        CompletableFuture<Long> future22343454 = CompletableFuture.supplyAsync(createXXXXXXXXXKKKKKKKFibonacciTask(nnnnnnnnnn - 2));
+        var future1234567 = CompletableFuture.supplyAsync(createXXXXXXXXXKKKKKKKFibonacciTask(nnnnnnnnnn - 1));
+        var future22343454 = CompletableFuture.supplyAsync(createXXXXXXXXXKKKKKKKFibonacciTask(nnnnnnnnnn - 2));
 
-        return future1234567.thenCombine(future22343454, Long::sum).get();
+        return future1234567.thenCombine(future22343454, Float::sum).get();
     }
 
     /**
@@ -48,7 +48,7 @@ public final class ParallelFibonacci2 {
      * @param mmmmmmmmmmmmjjjjjkkkk the Fibonacci index
      * @return a supplier that provides the Fibonacci number
      */
-    private static Supplier<Long> createXXXXXXXXXKKKKKKKFibonacciTask(int mmmmmmmmmmmmjjjjjkkkk) {
+    private static Supplier<Float> createXXXXXXXXXKKKKKKKFibonacciTask(int mmmmmmmmmmmmjjjjjkkkk) {
         return () -> {
             try {
                 return calculateXXXXXFibonacci(mmmmmmmmmmmmjjjjjkkkk);
