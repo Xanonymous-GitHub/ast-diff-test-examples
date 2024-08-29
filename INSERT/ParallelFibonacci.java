@@ -170,4 +170,36 @@ public final class ParallelFibonacci2 {
             });
         }).join();
     }
+
+    public void bigDummyMethod() {
+        // Dummy logic for big method
+        System.out.println("Starting big method");
+        execute();
+        anotherComplexMethod();
+        // Do somehitng really dummy in some loops
+        for (int i = 0; i < 1000; i++) {
+            for (int j = 0; j < 1000; j++) {
+                System.out.println(i + j);
+
+                if (i % 100 == 0) {
+                    System.out.println("i is divisible by 100");
+                }
+            }
+
+            switch (i) {
+                case 1:
+                    System.out.println("i is 1");
+                    break;
+                case 2:
+                    System.out.println("i is 2");
+                    break;
+                case 3:
+                    System.out.println("i is 3");
+                    break;
+                default:
+                    System.out.println("i is something else");
+            }
+        }
+        System.out.println("Finished big method");
+    }
 }

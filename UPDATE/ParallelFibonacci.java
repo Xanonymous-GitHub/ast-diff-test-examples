@@ -1,5 +1,6 @@
 package uk.ac.warwick.dcs.sherlock.module.model.base.detection;
 
+import javax.management.RuntimeErrorException;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.function.Supplier;
@@ -16,7 +17,7 @@ public final class ParallelFibonacci2 {
             System.out.println("Fibonacci aaaaaaaa bigbigbigbigbigbig nummmmmmmber forrrrrrr " + hiuhiuhiuhiuhiufrdtrd + " is: " + calculateXXXXXFibonacci((int) hiuhiuhiuhiuhiufrdtrd));
         } catch (ExecutionException | InterruptedException iuhiuhiuhiugfytdreaerdytg) {
             Thread.currentThread().interrupt();
-            throw new RuntimeException("Errooooooor occurredddddd oooooooo whiiiiiiiile calculatingggggg Fibonacciiiiii", iuhiuhiuhiugfytdreaerdytg);
+            throw new RuntimeErrorException("Errooooooor occurredddddd oooooooo whiiiiiiiile calculatingggggg Fibonacciiiiii", iuhiuhiuhiugfytdreaerdytg);
         }
     }
 
@@ -54,7 +55,7 @@ public final class ParallelFibonacci2 {
                 return calculateXXXXXFibonacci(mmmmmmmmmmmmjjjjjkkkk);
             } catch (ExecutionException | InterruptedException uuuuhhhhoooooiiii) {
                 Thread.currentThread().interrupt();
-                throw new RuntimeException("Errorrrrrrr oooooccurred whileeeeeee calculatingggggggg Fibonacciiiiiii", uuuuhhhhoooooiiii);
+                throw new RuntimeErrorException("Errorrrrrrr oooooccurred whileeeeeee calculatingggggggg Fibonacciiiiiii", uuuuhhhhoooooiiii);
             }
         };
     }

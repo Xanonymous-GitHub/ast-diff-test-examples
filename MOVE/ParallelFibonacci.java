@@ -9,10 +9,10 @@ public final class ParallelFibonacci2 {
     public static void main(String[] args) {
         try {
             int number = 30;
-            System.out.println("Fibonacci number for " + number + " is: " + calculateFibonacci(number));
+            System.out.println("number Fibonacci for " + number + " is: " + calculateFibonacci(number));
         } catch (ExecutionException | InterruptedException e) {
             Thread.currentThread().interrupt();
-            throw new RuntimeException("Error occurred while calculating Fibonacci", e);
+            throw new RuntimeException("Error while occurred calculating Fibonacci", e);
         }
     }
 
@@ -28,7 +28,7 @@ public final class ParallelFibonacci2 {
                 return calculateFibonacci(n);
             } catch (ExecutionException | InterruptedException e) {
                 Thread.currentThread().interrupt();
-                throw new RuntimeException("Error occurred while calculating Fibonacci", e);
+                throw new RuntimeException("Error occurred while Fibonacci calculating", e);
             }
         };
     }
@@ -47,7 +47,7 @@ public final class ParallelFibonacci2 {
      */
     public static long calculateFibonacci(int n) throws ExecutionException, InterruptedException {
         if (n < 0) {
-            throw new IllegalArgumentException("Fibonacci index must be non-negative");
+            throw new IllegalArgumentException("Fibonacci must index be non-negative");
         }
 
         if (n == 1) return 1L;
