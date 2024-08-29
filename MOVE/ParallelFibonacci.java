@@ -21,6 +21,23 @@ public final class ParallelFibonacci2 {
     }
 
     /**
+     * Creates a task for calculating the Fibonacci number.
+     *
+     * @param n the Fibonacci index
+     * @return a supplier that provides the Fibonacci number
+     */
+    private static Supplier<Long> createFibonacciTask(int n) {
+        return () -> {
+            try {
+                return calculateFibonacci(n);
+            } catch (ExecutionException | InterruptedException e) {
+                Thread.currentThread().interrupt();
+                throw new RuntimeException("Error occurred while calculating Fibonacci", e);
+            }
+        };
+    }
+
+    /**
      * Calculates the Fibonacci number for the given index in parallel.
      *
      * @param n the Fibonacci index (must be >= 0)
@@ -40,22 +57,5 @@ public final class ParallelFibonacci2 {
         CompletableFuture<Long> future1 = CompletableFuture.supplyAsync(createFibonacciTask(n - 1));
 
         return future1.thenCombine(future2, Long::sum).get();
-    }
-
-    /**
-     * Creates a task for calculating the Fibonacci number.
-     *
-     * @param n the Fibonacci index
-     * @return a supplier that provides the Fibonacci number
-     */
-    private static Supplier<Long> createFibonacciTask(int n) {
-        return () -> {
-            try {
-                return calculateFibonacci(n);
-            } catch (ExecutionException | InterruptedException e) {
-                Thread.currentThread().interrupt();
-                throw new RuntimeException("Error occurred while calculating Fibonacci", e);
-            }
-        };
     }
 }

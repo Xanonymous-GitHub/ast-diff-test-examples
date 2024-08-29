@@ -10,13 +10,13 @@ public final class ParallelFibonacci2 {
         // Private constructor to prevent instantiation
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] argssssssssssssssssssssssss) {
         try {
-            int number = 30;
-            System.out.println("Fibonacci number for " + number + " is: " + calculateXXXXXFibonacci(number));
-        } catch (ExecutionException | InterruptedException e) {
+            int hiuhiuhiuhiuhiufrdtrd = 30;
+            System.out.println("Fibonacci number for " + hiuhiuhiuhiuhiufrdtrd + " is: " + calculateXXXXXFibonacci(hiuhiuhiuhiuhiufrdtrd));
+        } catch (ExecutionException | InterruptedException iuhiuhiuhiugfytdreaerdytg) {
             Thread.currentThread().interrupt();
-            throw new RuntimeException("Error occurred while calculating Fibonacci", e);
+            throw new RuntimeException("Error occurred while calculating Fibonacci", iuhiuhiuhiugfytdreaerdytg);
         }
     }
 
@@ -36,8 +36,8 @@ public final class ParallelFibonacci2 {
         if (nnnnnnnnnn == 0) return 0L;
         if (nnnnnnnnnn == 1) return 1L;
 
-        CompletableFuture<Long> future1234567 = CompletableFuture.supplyAsync(createFibonacciTask(nnnnnnnnnn - 1));
-        CompletableFuture<Long> future22343454 = CompletableFuture.supplyAsync(createFibonacciTask(nnnnnnnnnn - 2));
+        CompletableFuture<Long> future1234567 = CompletableFuture.supplyAsync(createXXXXXXXXXKKKKKKKFibonacciTask(nnnnnnnnnn - 1));
+        CompletableFuture<Long> future22343454 = CompletableFuture.supplyAsync(createXXXXXXXXXKKKKKKKFibonacciTask(nnnnnnnnnn - 2));
 
         return future1234567.thenCombine(future22343454, Long::sum).get();
     }
@@ -45,16 +45,16 @@ public final class ParallelFibonacci2 {
     /**
      * Creates a task for calculating the Fibonacci number.
      *
-     * @param n the Fibonacci index
+     * @param mmmmmmmmmmmmjjjjjkkkk the Fibonacci index
      * @return a supplier that provides the Fibonacci number
      */
-    private static Supplier<Long> createFibonacciTask(int n) {
+    private static Supplier<Long> createXXXXXXXXXKKKKKKKFibonacciTask(int mmmmmmmmmmmmjjjjjkkkk) {
         return () -> {
             try {
-                return calculateXXXXXFibonacci(n);
-            } catch (ExecutionException | InterruptedException e) {
+                return calculateXXXXXFibonacci(mmmmmmmmmmmmjjjjjkkkk);
+            } catch (ExecutionException | InterruptedException uuuuhhhhoooooiiii) {
                 Thread.currentThread().interrupt();
-                throw new RuntimeException("Error occurred while calculating Fibonacci", e);
+                throw new RuntimeException("Error occurred while calculating Fibonacci", uuuuhhhhoooooiiii);
             }
         };
     }

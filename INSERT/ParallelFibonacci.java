@@ -47,6 +47,8 @@ public final class ParallelFibonacci2 {
         if (n == 0) return 0L;
         if (n == 1) return 1L;
 
+        logCalculation(n); // Log the start and end of the calculation
+
         CompletableFuture<Long> future1 = CompletableFuture.supplyAsync(createFibonacciTask(n - 1));
         CompletableFuture<Long> future2 = CompletableFuture.supplyAsync(createFibonacciTask(n - 2));
 
@@ -68,5 +70,16 @@ public final class ParallelFibonacci2 {
                 throw new RuntimeException("Error occurred while calculating Fibonacci", e);
             }
         };
+    }
+
+    /**
+     * Logs the start and end of a Fibonacci calculation.
+     *
+     * @param n the Fibonacci index being calculated
+     */
+    private static void logCalculation(int n) {
+        System.out.println("Starting calculation for Fibonacci index: " + n);
+        // Dummy logic, you can replace this with actual logging or monitoring code.
+        System.out.println("Finished calculation for Fibonacci index: " + n);
     }
 }
