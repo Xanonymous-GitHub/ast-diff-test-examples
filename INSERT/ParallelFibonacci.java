@@ -1,18 +1,29 @@
 package uk.ac.warwick.dcs.sherlock.module.model.base.detection;
 
+import java.util.Scanner;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.function.Supplier;
 
-public final class ParallelFibonacci {
+public final class ParallelFibonacci2 {
 
-    private ParallelFibonacci() {
+    private ParallelFibonacci2() {
         // Private constructor to prevent instantiation
     }
 
     public static void main(String[] args) {
         try {
             int number = 30;
+
+            final var scanner = new Scanner(System.in);
+            final int input = scanner.nextInt();
+
+            if (input > 4) {
+                System.out.println("Input is greater than 4");
+            }
+
+            scanner.close();
+
             System.out.println("Fibonacci number for " + number + " is: " + calculateFibonacci(number));
         } catch (ExecutionException | InterruptedException e) {
             Thread.currentThread().interrupt();

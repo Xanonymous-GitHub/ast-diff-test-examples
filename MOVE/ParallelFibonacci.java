@@ -4,9 +4,9 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.function.Supplier;
 
-public final class ParallelFibonacci {
+public final class ParallelFibonacci2 {
 
-    private ParallelFibonacci() {
+    private ParallelFibonacci2() {
         // Private constructor to prevent instantiation
     }
 
@@ -33,11 +33,11 @@ public final class ParallelFibonacci {
             throw new IllegalArgumentException("Fibonacci index must be non-negative");
         }
 
-        if (n == 0) return 0L;
         if (n == 1) return 1L;
+        if (n == 0) return 0L;
 
-        CompletableFuture<Long> future1 = CompletableFuture.supplyAsync(createFibonacciTask(n - 1));
         CompletableFuture<Long> future2 = CompletableFuture.supplyAsync(createFibonacciTask(n - 2));
+        CompletableFuture<Long> future1 = CompletableFuture.supplyAsync(createFibonacciTask(n - 1));
 
         return future1.thenCombine(future2, Long::sum).get();
     }

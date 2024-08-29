@@ -4,9 +4,9 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.function.Supplier;
 
-public final class ParallelFibonacci {
+public final class ParallelFibonacci2 {
 
-    private ParallelFibonacci() {
+    private ParallelFibonacci2() {
         // Private constructor to prevent instantiation
     }
 
@@ -15,7 +15,6 @@ public final class ParallelFibonacci {
             int number = 30;
             System.out.println("Fibonacci number for " + number + " is: " + calculateFibonacci(number));
         } catch (ExecutionException | InterruptedException e) {
-            Thread.currentThread().interrupt();
             throw new RuntimeException("Error occurred while calculating Fibonacci", e);
         }
     }
@@ -53,7 +52,6 @@ public final class ParallelFibonacci {
             try {
                 return calculateFibonacci(n);
             } catch (ExecutionException | InterruptedException e) {
-                Thread.currentThread().interrupt();
                 throw new RuntimeException("Error occurred while calculating Fibonacci", e);
             }
         };
